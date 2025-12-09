@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Karyawan;
 
+use Carbon\Carbon;
 use App\Models\Task;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -12,9 +13,27 @@ class TaskController extends Controller
 {
     public function getData()
     {
-        $data = Task::with('project')->get();
+        $tasks = Task::with(['project' => function ($q) {
+            $q->withCount(['task as total_tasks', 'task as completed_tasks' => function ($q2) {
+                $q2->where('status', 4);
+            }]);
+            $q->with(['task' => function ($q3) {
+                $q3->where('status', '<>', 4) 
+                  ->where('deadline', '<', Carbon::now()); 
+            }]);
+        }])->get();
+
+        $formattedData = $tasks->map(function ($task) {
+            $project = $task->project;
+            $hasOverdueTask = false;
+            if ($project) {
+                $hasOverdueTask = $project->task->count() > 0;
+            }
+            $task->project->has_overdue_task = $hasOverdueTask;
+            return $task;
+        });
         
-        return response()->json(['data' => $data]);
+        return response()->json(['data' => $formattedData]);
     }
 
     public function index()

@@ -23,6 +23,7 @@
                         <th>Description</th>
                         <th>Priority</th>
                         <th>Deadline</th>
+                        <th>Overdue</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -87,6 +88,20 @@ function getData(){
                 }
             },
             { data: "deadline" },
+            { 
+                data: "deadline",
+                render: function(data, type, row) {
+                    const deadline = new Date(data);
+                    const now = new Date();
+                    if (row.status === 4) {
+                        return `<span class="badge bg-success">Selesai</span>`;
+                    }
+                    if (deadline < now) {
+                        return `<span class="badge bg-danger">Overdue</span>`;
+                    }
+                    return `<span class="badge bg-success">Tepat Waktu</span>`;
+                }
+            },
             { 
                 data: "status",
                 render: function(data, type, row){
@@ -340,4 +355,4 @@ function deleteData(id) {
     });
 }
 </script>
-@endpush>
+@endpush
