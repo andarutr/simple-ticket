@@ -42,27 +42,19 @@
                 <a href="#" class="d-flex align-items-center py-2" data-bs-toggle="dropdown"
                     data-bs-auto-close="outside" aria-expanded="true">
                     <div class="text-end me-2 d-none d-lg-inline-block">
-                        <div class="fw-bold text-dark">Nama User</div>
+                        <div class="fw-bold text-dark">{{ Auth::user()->name }}</div>
                         <small class="text-body d-block lh-sm">
-                            <i class="fi fi-rr-angle-down text-3xs me-1"></i> Role
+                            <i class="fi fi-rr-angle-down text-3xs me-1"></i> {{ Auth::user()->role }}
                         </small>
                     </div>
                     <div class="avatar avatar-sm rounded-circle avatar-status-success">
-                        <img src="/assets/images/avatar/avatar1.webp" alt="">
+                        <img src="https://andarutriadi.netlify.app/assets/img/andaru.webp" alt="">
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end w-225px mt-1">
                     <li>
-                        <a class="dropdown-item d-flex align-items-center gap-2" href="#">
-                            <i class="fi fi-rr-settings scale-1x"></i> Account Settings
-                        </a>
-                    </li>
-                    <li>
-                        <div class="dropdown-divider my-1"></div>
-                    </li>
-                    <li>
                         <a class="dropdown-item d-flex align-items-center gap-2 text-danger"
-                            href="#">
+                            href="/logout">
                             <i class="fi fi-sr-exit scale-1x"></i> Log Out
                         </a>
                     </li>

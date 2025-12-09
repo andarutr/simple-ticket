@@ -18,6 +18,7 @@
                     <span class="menu-label">Dashboard</span>
                 </a>
             </li>
+            @if(Auth::user()->role == 'admin')
             <li class="menu-heading">
                 <span class="menu-label">ADMIN</span>
             </li>
@@ -28,6 +29,8 @@
                     <span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">{{ \App\Models\Project::count() }}</span>
                 </a>
             </li>
+            @endif
+            @if(Auth::user()->role == 'karyawan')
             <li class="menu-heading">
                 <span class="menu-label">KARYAWAN</span>
             </li>
@@ -44,10 +47,11 @@
                     <span class="menu-label">Summary</span>
                 </a>
             </li>
+            @endif
         </ul>
     </nav>
     <div class="app-footer">
-        <a href="#" class="btn btn-outline-danger waves-effect btn-shadow btn-app-nav w-100">
+        <a href="/logout" class="btn btn-outline-danger waves-effect btn-shadow btn-app-nav w-100">
             <span class="nav-text">LOGOUT</span>
         </a>
     </div>

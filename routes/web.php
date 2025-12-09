@@ -3,13 +3,18 @@
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Karyawan\TaskController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('login'); // routed named login sementara hehe
+Route::redirect('/', '/login');
 
-// Route::middleware('auth')->group(function(){
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'login_']);
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'register_']);
+Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::middleware('auth')->group(function(){
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
     // Admin
@@ -28,4 +33,4 @@ Route::get('/', function () {
     Route::get('/karyawan/task/edit/{id}', [TaskController::class, 'edit']);
     Route::put('/karyawan/task/update', [TaskController::class, 'update']);
     Route::delete('/karyawan/task/delete', [TaskController::class, 'destroy']);
-// });
+});
