@@ -21,6 +21,7 @@ Route::get('/', function () {
     Route::delete('/admin/project/delete', [ProjectController::class, 'destroy']);
     // Karyawan
     Route::get('/karyawan/task', [TaskController::class, 'index']);
+    Route::get('/karyawan/task/summary', [TaskController::class, 'summary']);
     Route::get('/karyawan/task/getData', [TaskController::class, 'getData']);
     Route::get('/karyawan/task/create', [TaskController::class, 'create']);
     Route::post('/karyawan/task/store', [TaskController::class, 'store']);

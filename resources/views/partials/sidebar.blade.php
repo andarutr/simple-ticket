@@ -38,6 +38,12 @@
                     <span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">{{ \App\Models\Task::count() }}</span>
                 </a>
             </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/karyawan/task/summary">
+                    <i class="fi fi-rs-check"></i>
+                    <span class="menu-label">Summary</span>
+                </a>
+            </li>
         </ul>
     </nav>
     <div class="app-footer">

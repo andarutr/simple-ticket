@@ -41,6 +41,32 @@ class TaskController extends Controller
         return view('pages.karyawan.task.index');
     }
 
+    public function summary()
+    {
+        $task_summary = Project::withCount([
+            'task as planning_count' => function ($q) {
+                $q->where('status', 1); // planning
+            },
+            'task as on_progress_count' => function ($q) {
+                $q->where('status', 2); // on_progress
+            },
+            'task as done_count' => function ($q) {
+                $q->where('status', 3); // done
+            }
+        ])->get()->map(function ($project) {
+            $total = $project->planning_count + $project->on_progress_count + $project->done_count;
+            return [
+                'name' => $project->name,
+                'planning' => $project->planning_count,
+                'on_progress' => $project->on_progress_count,
+                'done' => $project->done_count,
+                'total' => $total,
+            ];
+        })->sortByDesc('total')->values()->toArray();
+
+        return view('pages.karyawan.task.summary', compact('task_summary'));
+    }
+
     public function create()
     {
         $projects = Project::all();
