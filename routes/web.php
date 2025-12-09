@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Karyawan\TaskController;
@@ -9,6 +10,8 @@ Route::get('/', function () {
 })->name('login'); // routed named login sementara hehe
 
 // Route::middleware('auth')->group(function(){
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index']);
     // Admin
     Route::get('/admin/project', [ProjectController::class, 'index']);
     Route::get('/admin/project/edit/{id}', [ProjectController::class, 'edit']);

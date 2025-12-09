@@ -12,14 +12,14 @@
     </div>
     <nav class="app-navbar" data-simplebar>
         <ul class="menubar">
-            <li class="menu-heading">
-                <span class="menu-label">ADMIN</span>
-            </li>
             <li class="menu-item">
-                <a class="menu-link" href="/admin/dashboard">
+                <a class="menu-link" href="/dashboard">
                     <i class="fi fi-rr-chart-pie-alt"></i>
                     <span class="menu-label">Dashboard</span>
                 </a>
+            </li>
+            <li class="menu-heading">
+                <span class="menu-label">ADMIN</span>
             </li>
             <li class="menu-item">
                 <a class="menu-link" href="/admin/project">
@@ -30,12 +30,6 @@
             </li>
             <li class="menu-heading">
                 <span class="menu-label">KARYAWAN</span>
-            </li>
-            <li class="menu-item">
-                <a class="menu-link" href="/karyawan/dashboard">
-                    <i class="fi fi-rr-chart-pie-alt"></i>
-                    <span class="menu-label">Dashboard</span>
-                </a>
             </li>
             <li class="menu-item">
                 <a class="menu-link" href="/karyawan/task">
