@@ -5,6 +5,7 @@
   <meta name="theme-color" content="#316AFF">
   <meta name="robots" content="index, follow">
   <title>@yield('title') Simple Ticket</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="/assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,6 +64,8 @@
   <script src="/assets/libs/global/global.min.js"></script>
   <script src="/assets/js/appSettings.js"></script>
   <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/sweetalert2.js"></script>
   @stack('scripts')
 </body>
 </html>

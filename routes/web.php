@@ -9,4 +9,9 @@ Route::get('/', function () {
 
 // Route::middleware('auth')->group(function(){
     Route::get('/admin/project', [ProjectController::class, 'index']);
+    Route::get('/admin/project/edit/{id}', [ProjectController::class, 'edit']);
+    Route::get('/admin/project/getData', [ProjectController::class, 'getData']);
+    Route::post('/admin/project/store', [ProjectController::class, 'store']);
+    Route::put('/admin/project/update', [ProjectController::class, 'update']);
+    Route::delete('/admin/project/delete', [ProjectController::class, 'destroy']);
 // });
