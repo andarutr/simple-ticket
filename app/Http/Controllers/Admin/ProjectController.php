@@ -11,7 +11,7 @@ class ProjectController extends Controller
 {
     public function getData()
     {
-        $data = Project::all();
+        $data = Project::withCount('task')->get();
         
         // Sementara, abis ini install yajra!
         return response()->json(['data' => $data]);

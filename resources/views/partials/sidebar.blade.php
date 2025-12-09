@@ -25,7 +25,7 @@
                 <a class="menu-link" href="/admin/project">
                     <i class="fi fi-rs-floor-layer"></i>
                     <span class="menu-label">Project</span>
-                    <span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">5</span>
+                    <span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">{{ \App\Models\Project::count() }}</span>
                 </a>
             </li>
             <li class="menu-heading">
@@ -41,7 +41,7 @@
                 <a class="menu-link" href="/karyawan/task">
                     <i class="fi fi-rs-list"></i>
                     <span class="menu-label">Task</span>
-                    <span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">5</span>
+                    <span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">{{ \App\Models\Task::count() }}</span>
                 </a>
             </li>
         </ul>

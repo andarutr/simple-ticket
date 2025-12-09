@@ -22,6 +22,7 @@
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Status</th>
+                        <th>Total Task</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -75,6 +76,10 @@ function getData(){
 
                     return span;
                 }
+            },
+            {
+                data: "task_count", 
+                defaultContent: "0"
             },
             {
                 data: null,
