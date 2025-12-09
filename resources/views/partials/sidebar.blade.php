@@ -12,19 +12,35 @@
     </div>
     <nav class="app-navbar" data-simplebar>
         <ul class="menubar">
-            <li class="menu-item">
-                <a class="menu-link" href="#">
-                    <i class="fi fi-rr-chart-pie-alt"></i>
-                    <span class="menu-label">Dashboard</span>
-                </a>
-            </li>
             <li class="menu-heading">
                 <span class="menu-label">ADMIN</span>
             </li>
             <li class="menu-item">
-                <a class="menu-link" href="javascript:void(0);">
+                <a class="menu-link" href="/admin/dashboard">
+                    <i class="fi fi-rr-chart-pie-alt"></i>
+                    <span class="menu-label">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/project">
                     <i class="fi fi-rs-floor-layer"></i>
                     <span class="menu-label">Project</span>
+                    <span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">5</span>
+                </a>
+            </li>
+            <li class="menu-heading">
+                <span class="menu-label">KARYAWAN</span>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/karyawan/dashboard">
+                    <i class="fi fi-rr-chart-pie-alt"></i>
+                    <span class="menu-label">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/karyawan/task">
+                    <i class="fi fi-rs-list"></i>
+                    <span class="menu-label">Task</span>
                     <span class="badge badge-sm rounded-pill bg-secondary ms-2 float-end">5</span>
                 </a>
             </li>
