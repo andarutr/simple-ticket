@@ -2,36 +2,23 @@
 
 namespace App\Http\Controllers\Karyawan;
 
-use Carbon\Carbon;
-use App\Models\Task;
-use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\TaskRepositoryInterface;
 use App\Http\Requests\Karyawan\StoreTaskRequest;
 
 class TaskController extends Controller
 {
+    protected $taskRepository;
+
+    public function __construct(TaskRepositoryInterface $taskRepository) // Inject Repository
+    {
+        $this->taskRepository = $taskRepository;
+    }
+    
     public function getData()
     {
-        $tasks = Task::with(['project' => function ($q) {
-            $q->withCount(['task as total_tasks', 'task as completed_tasks' => function ($q2) {
-                $q2->where('status', 4);
-            }]);
-            $q->with(['task' => function ($q3) {
-                $q3->where('status', '<>', 4) 
-                  ->where('deadline', '<', Carbon::now()); 
-            }]);
-        }])->get();
-
-        $formattedData = $tasks->map(function ($task) {
-            $project = $task->project;
-            $hasOverdueTask = false;
-            if ($project) {
-                $hasOverdueTask = $project->task->count() > 0;
-            }
-            $task->project->has_overdue_task = $hasOverdueTask;
-            return $task;
-        });
+        $formattedData = $this->taskRepository->getDataWithProjectAndCounts();
         
         return response()->json(['data' => $formattedData]);
     }
@@ -43,33 +30,14 @@ class TaskController extends Controller
 
     public function summary()
     {
-        $task_summary = Project::withCount([
-            'task as planning_count' => function ($q) {
-                $q->where('status', 1); // planning
-            },
-            'task as on_progress_count' => function ($q) {
-                $q->where('status', 2); // on_progress
-            },
-            'task as done_count' => function ($q) {
-                $q->where('status', 3); // done
-            }
-        ])->get()->map(function ($project) {
-            $total = $project->planning_count + $project->on_progress_count + $project->done_count;
-            return [
-                'name' => $project->name,
-                'planning' => $project->planning_count,
-                'on_progress' => $project->on_progress_count,
-                'done' => $project->done_count,
-                'total' => $total,
-            ];
-        })->sortByDesc('total')->values()->toArray();
+        $task_summary = $this->taskRepository->getTaskSummary();
 
         return view('pages.karyawan.task.summary', compact('task_summary'));
     }
 
     public function create()
     {
-        $projects = Project::all();
+        $projects = $this->taskRepository->getAllProjects();
 
         return response()->json([
             'projects' => $projects
@@ -80,15 +48,15 @@ class TaskController extends Controller
     {
         $req->validated();
 
-        Task::create($req->all());
+        $this->taskRepository->createTask($req->all());
 
         return response()->json(['message' => 'Berhasil menambahkan task'], 201);
     }
 
     public function edit(Request $req, $id)
     {
-        $task = Task::with('project')->find($id);
-        $projects = Project::all();
+        $task = $this->taskRepository->findTaskWithProject($id);
+        $projects = $this->taskRepository->getAllProjects();
 
         if (!$task) {
             return response()->json(['message' => 'Task tidak ditemukan'], 404);
@@ -103,26 +71,24 @@ class TaskController extends Controller
 
     public function update(StoreTaskRequest $req)
     {
-        $task = Task::find($req->id);
+        $task = $this->taskRepository->findTaskById($req->id);
 
         if (!$task) {
             return response()->json(['message' => 'Task tidak ditemukan'], 404);
         }
 
-        $task->update($req->all());
+        $this->taskRepository->updateTask($req->id, $req->all());
 
         return response()->json(['message' => 'Berhasil mengupdate task'], 200);
     }
 
     public function destroy(Request $req)
     {
-        $task = Task::find($req->id);
+        $deleted = $this->taskRepository->deleteTask($req->id);
 
-        if (!$task) {
+        if (!$deleted) {
             return response()->json(['message' => 'Task tidak ditemukan'], 404);
         }
-
-        $task->delete();
 
         return response()->json(['message' => 'Berhasil menghapus task'], 200);
     }

@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Repositories\UserRepositoryInterface;
 
 class AuthController extends Controller
 {
+    protected $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+    
     public function register()
     {
         return view('pages.auth.register');
@@ -20,11 +26,7 @@ class AuthController extends Controller
     {
         $req->validated();
 
-        $user = User::create([
-            'name' => $req->name,
-            'email' => $req->email,
-            'password' => Hash::make($req->password),
-        ]);
+        $this->userRepository->create($req->only(['name', 'email', 'password']));
 
         return response()->json(['message' => 'Berhasil mendaftar, silakan login.'], 201);
     }

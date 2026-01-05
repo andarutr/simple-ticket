@@ -2,18 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreProjectRequest;
-use App\Models\Project;
-use Illuminate\Http\Request;
+use App\Repositories\ProjectRepositoryInterface;
 
 class ProjectController extends Controller
 {
+    protected $projectRepository;
+
+    public function __construct(ProjectRepositoryInterface $projectRepository) // Inject Repository
+    {
+        $this->projectRepository = $projectRepository;
+    }
+
+    
     public function getData()
     {
-        $data = Project::withCount('task')->get();
-        
-        // Sementara, abis ini install yajra!
+        $data = $this->projectRepository->getDataWithTaskCount();
+
         return response()->json(['data' => $data]);
     }
 
@@ -26,14 +33,14 @@ class ProjectController extends Controller
     {
         $req->validated();
 
-        Project::create($req->all());
+        $this->projectRepository->createProject($req->all());
 
         return response()->json(['message' => 'Berhasil menambahkan project'], 201);
     }
 
-    public function edit(Request $req, $id)
+    public function edit($id)
     {
-        $project = Project::find($id);
+        $project = $this->projectRepository->findProjectById($id);
 
         if (!$project) {
             return response()->json(['message' => 'Project tidak ditemukan'], 404);
@@ -47,26 +54,24 @@ class ProjectController extends Controller
 
     public function update(StoreProjectRequest $req)
     {
-        $project = Project::find($req->id);
+        $project = $this->projectRepository->findProjectById($req->id);
 
         if (!$project) {
             return response()->json(['message' => 'Project tidak ditemukan'], 404);
         }
 
-        $project->update($req->all());
+        $this->projectRepository->updateProject($req->id, $req->all());
 
         return response()->json(['message' => 'Berhasil mengupdate project'], 200);
     }
 
     public function destroy(Request $req)
     {
-        $project = Project::find($req->id);
+        $deleted = $this->projectRepository->deleteProject($req->id);
 
-        if (!$project) {
+        if (!$deleted) {
             return response()->json(['message' => 'Project tidak ditemukan'], 404);
         }
-
-        $project->delete();
 
         return response()->json(['message' => 'Berhasil menghapus project'], 200);
     }
