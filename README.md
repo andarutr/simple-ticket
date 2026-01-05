@@ -3,6 +3,15 @@ Simple ticket adalah aplikasi sederhana ticketing untuk per-orangan. Dibuat meng
 ## Role
 1. Admin: Membuat project beserta deadline dan status.
 2. Karyawan: Mengerjakan task sesuai dengan deadline.
+## Guide Book
+<ol>
+    <li>
+        <a href="public/assets/Guide Book Admin Simple Ticket.pdf">Guide Book Untuk Admin</a>
+    </li>
+    <li>
+        <a href="public/assets/Guide Book Karyawan Simple Ticket.pdf">Guide Book Untuk Karyawan</a>
+    </li>
+</ol>
 ## Screenshot Aplikasi
 ### Admin
 Dashboard (Bisa untuk karyawan maupun admin.
