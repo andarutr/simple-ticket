@@ -1,0 +1,118 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ProjectSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $now = now();
+
+        $projects = [
+            ['name' => 'Alpha', 'start_date' => '2025-01-10', 'end_date' => '2025-04-10', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Beta', 'start_date' => '2025-02-01', 'end_date' => '2025-05-15', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Gamma', 'start_date' => '2025-01-15', 'end_date' => '2025-03-30', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Delta', 'start_date' => '2025-03-01', 'end_date' => '2025-06-20', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Epsilon', 'start_date' => '2025-02-20', 'end_date' => '2025-04-05', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Zeta', 'start_date' => '2025-01-05', 'end_date' => '2025-06-01', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Eta', 'start_date' => '2025-03-10', 'end_date' => '2025-07-10', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Theta', 'start_date' => '2025-04-01', 'end_date' => '2025-08-15', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Iota', 'start_date' => '2025-02-28', 'end_date' => '2025-05-30', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Kappa', 'start_date' => '2025-03-15', 'end_date' => '2025-06-30', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Lambda', 'start_date' => '2025-01-20', 'end_date' => '2025-04-20', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Mu', 'start_date' => '2025-04-05', 'end_date' => '2025-07-05', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Nu', 'start_date' => '2025-02-10', 'end_date' => '2025-05-10', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Xi', 'start_date' => '2025-03-25', 'end_date' => '2025-06-25', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Omicron', 'start_date' => '2025-01-30', 'end_date' => '2025-05-01', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Pi', 'start_date' => '2025-04-12', 'end_date' => '2025-07-12', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Rho', 'start_date' => '2025-02-15', 'end_date' => '2025-05-15', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Sigma', 'start_date' => '2025-03-05', 'end_date' => '2025-06-05', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Tau', 'start_date' => '2025-01-25', 'end_date' => '2025-04-25', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Upsilon', 'start_date' => '2025-04-20', 'end_date' => '2025-07-20', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Phi', 'start_date' => '2025-02-05', 'end_date' => '2025-05-05', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Chi', 'start_date' => '2025-03-18', 'end_date' => '2025-06-18', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Psi', 'start_date' => '2025-01-12', 'end_date' => '2025-04-12', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Omega', 'start_date' => '2025-04-30', 'end_date' => '2025-08-30', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Aries', 'start_date' => '2025-02-22', 'end_date' => '2025-05-22', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Taurus', 'start_date' => '2025-03-08', 'end_date' => '2025-06-08', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Gemini', 'start_date' => '2025-01-18', 'end_date' => '2025-04-18', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Cancer', 'start_date' => '2025-04-15', 'end_date' => '2025-07-15', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Leo', 'start_date' => '2025-02-25', 'end_date' => '2025-05-25', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Virgo', 'start_date' => '2025-03-22', 'end_date' => '2025-06-22', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Libra', 'start_date' => '2025-01-08', 'end_date' => '2025-04-08', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Scorpio', 'start_date' => '2025-04-25', 'end_date' => '2025-07-25', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Sagittarius', 'start_date' => '2025-02-12', 'end_date' => '2025-05-12', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Capricorn', 'start_date' => '2025-03-30', 'end_date' => '2025-06-30', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Aquarius', 'start_date' => '2025-01-14', 'end_date' => '2025-04-14', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Pisces', 'start_date' => '2025-04-18', 'end_date' => '2025-07-18', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Helios', 'start_date' => '2025-02-18', 'end_date' => '2025-05-18', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Selene', 'start_date' => '2025-03-12', 'end_date' => '2025-06-12', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Eos', 'start_date' => '2025-01-22', 'end_date' => '2025-04-22', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Nyx', 'start_date' => '2025-04-22', 'end_date' => '2025-07-22', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Chaos', 'start_date' => '2025-02-28', 'end_date' => '2025-05-28', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Gaia', 'start_date' => '2025-03-28', 'end_date' => '2025-06-28', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Uranus', 'start_date' => '2025-01-28', 'end_date' => '2025-04-28', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Pontus', 'start_date' => '2025-04-28', 'end_date' => '2025-07-28', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Tartarus', 'start_date' => '2025-02-08', 'end_date' => '2025-05-08', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Erebus', 'start_date' => '2025-03-02', 'end_date' => '2025-06-02', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Hemera', 'start_date' => '2025-01-02', 'end_date' => '2025-04-02', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Aether', 'start_date' => '2025-04-08', 'end_date' => '2025-07-08', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Hypnos', 'start_date' => '2025-02-02', 'end_date' => '2025-05-02', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Morpheus', 'start_date' => '2025-03-04', 'end_date' => '2025-06-04', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Thanatos', 'start_date' => '2025-01-04', 'end_date' => '2025-04-04', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Nemesis', 'start_date' => '2025-04-10', 'end_date' => '2025-07-10', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Kratos', 'start_date' => '2025-02-14', 'end_date' => '2025-05-14', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Bia', 'start_date' => '2025-03-14', 'end_date' => '2025-06-14', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Zelus', 'start_date' => '2025-01-16', 'end_date' => '2025-04-16', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Nike', 'start_date' => '2025-04-14', 'end_date' => '2025-07-14', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Cratos', 'start_date' => '2025-02-16', 'end_date' => '2025-05-16', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Eirene', 'start_date' => '2025-03-16', 'end_date' => '2025-06-16', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Eunomia', 'start_date' => '2025-01-10', 'end_date' => '2025-04-10', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Dike', 'start_date' => '2025-04-16', 'end_date' => '2025-07-16', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Themis', 'start_date' => '2025-02-20', 'end_date' => '2025-05-20', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Astraea', 'start_date' => '2025-03-20', 'end_date' => '2025-06-20', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Stilbon', 'start_date' => '2025-01-20', 'end_date' => '2025-04-20', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Phosphorus', 'start_date' => '2025-04-20', 'end_date' => '2025-07-20', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Hesperus', 'start_date' => '2025-02-24', 'end_date' => '2025-05-24', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Arke', 'start_date' => '2025-03-24', 'end_date' => '2025-06-24', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Pallas', 'start_date' => '2025-01-24', 'end_date' => '2025-04-24', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Perses', 'start_date' => '2025-04-24', 'end_date' => '2025-07-24', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Boreas', 'start_date' => '2025-02-26', 'end_date' => '2025-05-26', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Notus', 'start_date' => '2025-03-26', 'end_date' => '2025-06-26', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Zephyrus', 'start_date' => '2025-01-26', 'end_date' => '2025-04-26', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Eurus', 'start_date' => '2025-04-26', 'end_date' => '2025-07-26', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Tyche', 'start_date' => '2025-02-04', 'end_date' => '2025-05-04', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Ananke', 'start_date' => '2025-03-06', 'end_date' => '2025-06-06', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Adrasteia', 'start_date' => '2025-01-06', 'end_date' => '2025-04-06', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Aion', 'start_date' => '2025-04-06', 'end_date' => '2025-07-06', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Chronos', 'start_date' => '2025-02-06', 'end_date' => '2025-05-06', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Caerus', 'start_date' => '2025-03-06', 'end_date' => '2025-06-06', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Auxo', 'start_date' => '2025-01-06', 'end_date' => '2025-04-06', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Carpo', 'start_date' => '2025-04-06', 'end_date' => '2025-07-06', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Auxesia', 'start_date' => '2025-02-06', 'end_date' => '2025-05-06', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Hegemone', 'start_date' => '2025-03-06', 'end_date' => '2025-06-06', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Hegemonia', 'start_date' => '2025-01-06', 'end_date' => '2025-04-06', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Epimetheus', 'start_date' => '2025-04-06', 'end_date' => '2025-07-06', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Prometheus', 'start_date' => '2025-02-06', 'end_date' => '2025-05-06', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Atlas', 'start_date' => '2025-03-06', 'end_date' => '2025-06-06', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Epaphus', 'start_date' => '2025-01-06', 'end_date' => '2025-04-06', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Minos', 'start_date' => '2025-04-06', 'end_date' => '2025-07-06', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Rhadamanthus', 'start_date' => '2025-02-06', 'end_date' => '2025-05-06', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Sarpedon', 'start_date' => '2025-03-06', 'end_date' => '2025-06-06', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Aeacus', 'start_date' => '2025-01-06', 'end_date' => '2025-04-06', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Dia', 'start_date' => '2025-04-06', 'end_date' => '2025-07-06', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Pandia', 'start_date' => '2025-02-06', 'end_date' => '2025-05-06', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Herse', 'start_date' => '2025-03-06', 'end_date' => '2025-06-06', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Pallas Athena', 'start_date' => '2025-01-06', 'end_date' => '2025-04-06', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'Nike Athena', 'start_date' => '2025-04-06', 'end_date' => '2025-07-06', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+        ];
+
+        DB::table('projects')->insert($projects);
+    }
+}

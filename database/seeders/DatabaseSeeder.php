@@ -31,5 +31,10 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('test1234'),
             'role' => 'karyawan'
         ]);
+
+        $this->call([
+            ProjectSeeder::class,
+            TaskSeeder::class,
+        ]);
     }
 }

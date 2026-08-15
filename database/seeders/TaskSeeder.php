@@ -1,0 +1,118 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class TaskSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $now = now();
+
+        $tasks = [
+            ['project_id' => 1, 'title' => 'Setup initial project structure', 'description' => 'Create directories, configure .env, install dependencies.', 'priority' => 2, 'deadline' => '2025-01-20', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 2, 'title' => 'Design database schema', 'description' => 'Define tables, relationships, and constraints.', 'priority' => 3, 'deadline' => '2025-02-10', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 3, 'title' => 'Implement user authentication', 'description' => 'Login, register, and password reset features.', 'priority' => 2, 'deadline' => '2025-02-15', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 4, 'title' => 'Build API endpoints for users', 'description' => 'CRUD operations for user management.', 'priority' => 2, 'deadline' => '2025-03-10', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 5, 'title' => 'Create dashboard UI', 'description' => 'Design and implement main dashboard page.', 'priority' => 1, 'deadline' => '2025-02-25', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 6, 'title' => 'Integrate payment gateway', 'description' => 'Setup and test payment processing.', 'priority' => 3, 'deadline' => '2025-04-15', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 7, 'title' => 'Write unit tests for API', 'description' => 'Ensure API endpoints are working correctly.', 'priority' => 2, 'deadline' => '2025-03-20', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 8, 'title' => 'Deploy to staging environment', 'description' => 'Setup CI/CD for staging deployment.', 'priority' => 2, 'deadline' => '2025-04-25', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 9, 'title' => 'Fix critical security issues', 'description' => 'Address identified vulnerabilities.', 'priority' => 3, 'deadline' => '2025-03-05', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 10, 'title' => 'Optimize database queries', 'description' => 'Improve performance of slow queries.', 'priority' => 2, 'deadline' => '2025-04-10', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 11, 'title' => 'Add email notification system', 'description' => 'Send notifications for important events.', 'priority' => 2, 'deadline' => '2025-02-05', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 12, 'title' => 'Implement file upload feature', 'description' => 'Allow users to upload documents.', 'priority' => 2, 'deadline' => '2025-04-20', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 13, 'title' => 'Create admin panel', 'description' => 'Build interface for admin operations.', 'priority' => 2, 'deadline' => '2025-03-15', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 14, 'title' => 'Setup monitoring and logging', 'description' => 'Integrate tools for application monitoring.', 'priority' => 3, 'deadline' => '2025-04-05', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 15, 'title' => 'Migrate legacy data', 'description' => 'Transfer data from old system.', 'priority' => 2, 'deadline' => '2025-03-30', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 16, 'title' => 'Refactor frontend components', 'description' => 'Improve code quality and maintainability.', 'priority' => 1, 'deadline' => '2025-05-10', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 17, 'title' => 'Implement real-time notifications', 'description' => 'Use WebSockets for live updates.', 'priority' => 3, 'deadline' => '2025-04-01', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 18, 'title' => 'Add multi-language support', 'description' => 'Internationalize the application.', 'priority' => 2, 'deadline' => '2025-05-20', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 19, 'title' => 'Design mobile responsive UI', 'description' => 'Ensure app works on mobile devices.', 'priority' => 1, 'deadline' => '2025-03-01', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 20, 'title' => 'Setup automated backups', 'description' => 'Configure database and file backups.', 'priority' => 2, 'deadline' => '2025-05-01', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 21, 'title' => 'Integrate third-party APIs', 'description' => 'Connect to external services.', 'priority' => 3, 'deadline' => '2025-04-12', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 22, 'title' => 'Write API documentation', 'description' => 'Document all available endpoints.', 'priority' => 1, 'deadline' => '2025-03-25', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 23, 'title' => 'Implement role-based access control', 'description' => 'Restrict access based on user roles.', 'priority' => 3, 'deadline' => '2025-04-18', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 24, 'title' => 'Create data export feature', 'description' => 'Allow users to download reports.', 'priority' => 2, 'deadline' => '2025-05-30', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 25, 'title' => 'Setup load balancing', 'description' => 'Distribute traffic across multiple servers.', 'priority' => 3, 'deadline' => '2025-06-10', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 26, 'title' => 'Add caching layer', 'description' => 'Improve performance using Redis.', 'priority' => 2, 'deadline' => '2025-04-28', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 27, 'title' => 'Implement audit logging', 'description' => 'Track user actions and changes.', 'priority' => 2, 'deadline' => '2025-05-15', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 28, 'title' => 'Create automated testing suite', 'description' => 'Setup end-to-end tests.', 'priority' => 3, 'deadline' => '2025-05-25', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 29, 'title' => 'Fix UI/UX feedback issues', 'description' => 'Address design and usability problems.', 'priority' => 1, 'deadline' => '2025-03-22', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 30, 'title' => 'Optimize image loading', 'description' => 'Reduce image sizes and load times.', 'priority' => 1, 'deadline' => '2025-04-08', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 31, 'title' => 'Implement search functionality', 'description' => 'Add full-text search for data.', 'priority' => 2, 'deadline' => '2025-04-30', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 32, 'title' => 'Setup SSL certificates', 'description' => 'Ensure all traffic is encrypted.', 'priority' => 2, 'deadline' => '2025-05-05', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 33, 'title' => 'Add data validation rules', 'description' => 'Ensure data integrity on input.', 'priority' => 2, 'deadline' => '2025-03-18', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 34, 'title' => 'Create user onboarding flow', 'description' => 'Guide new users through the app.', 'priority' => 1, 'deadline' => '2025-04-22', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 35, 'title' => 'Implement dark mode theme', 'description' => 'Add option for dark UI theme.', 'priority' => 1, 'deadline' => '2025-04-14', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 36, 'title' => 'Integrate analytics tracking', 'description' => 'Track user behavior and metrics.', 'priority' => 2, 'deadline' => '2025-05-18', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 37, 'title' => 'Build admin reports', 'description' => 'Create reports for admin users.', 'priority' => 2, 'deadline' => '2025-05-08', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 38, 'title' => 'Fix reported bugs', 'description' => 'Address issues reported by users.', 'priority' => 3, 'deadline' => '2025-04-25', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 39, 'title' => 'Setup automated email campaigns', 'description' => 'Send marketing emails.', 'priority' => 1, 'deadline' => '2025-05-22', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 40, 'title' => 'Add social media login', 'description' => 'Allow login via Google, Facebook, etc.', 'priority' => 2, 'deadline' => '2025-05-12', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 41, 'title' => 'Implement two-factor authentication', 'description' => 'Add extra layer of security.', 'priority' => 3, 'deadline' => '2025-05-02', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 42, 'title' => 'Create data import feature', 'description' => 'Allow users to upload data files.', 'priority' => 2, 'deadline' => '2025-05-28', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 43, 'title' => 'Setup staging review process', 'description' => 'Ensure code is reviewed before merging.', 'priority' => 1, 'deadline' => '2025-04-02', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 44, 'title' => 'Optimize frontend bundle size', 'description' => 'Reduce JavaScript and CSS file sizes.', 'priority' => 2, 'deadline' => '2025-05-08', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 45, 'title' => 'Add keyboard shortcuts', 'description' => 'Improve navigation efficiency.', 'priority' => 1, 'deadline' => '2025-04-16', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 46, 'title' => 'Implement data archiving', 'description' => 'Move old data to archive storage.', 'priority' => 2, 'deadline' => '2025-06-05', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 47, 'title' => 'Create user feedback system', 'description' => 'Allow users to submit feedback.', 'priority' => 1, 'deadline' => '2025-04-20', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 48, 'title' => 'Setup automated deployment', 'description' => 'Automate the release process.', 'priority' => 3, 'deadline' => '2025-05-30', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 49, 'title' => 'Add data visualization charts', 'description' => 'Display data using charts and graphs.', 'priority' => 2, 'deadline' => '2025-05-20', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 50, 'title' => 'Refine error handling', 'description' => 'Improve error messages and logging.', 'priority' => 2, 'deadline' => '2025-04-28', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 51, 'title' => 'Setup automated testing pipeline', 'description' => 'Run tests on every commit.', 'priority' => 3, 'deadline' => '2025-05-26', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 52, 'title' => 'Implement bulk operations', 'description' => 'Allow users to process multiple items.', 'priority' => 2, 'deadline' => '2025-05-16', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 53, 'title' => 'Add user activity tracking', 'description' => 'Monitor user sessions and actions.', 'priority' => 2, 'deadline' => '2025-05-14', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 54, 'title' => 'Create data export formats', 'description' => 'Support CSV, Excel, PDF exports.', 'priority' => 2, 'deadline' => '2025-06-02', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 55, 'title' => 'Setup multi-tenant architecture', 'description' => 'Support multiple clients on one instance.', 'priority' => 3, 'deadline' => '2025-06-15', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 56, 'title' => 'Integrate with external CRM', 'description' => 'Sync data with customer management tool.', 'priority' => 2, 'deadline' => '2025-05-24', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 57, 'title' => 'Build custom dashboard widgets', 'description' => 'Allow users to customize their dashboards.', 'priority' => 1, 'deadline' => '2025-05-10', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 58, 'title' => 'Implement data encryption', 'description' => 'Encrypt sensitive data at rest.', 'priority' => 3, 'deadline' => '2025-06-08', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 59, 'title' => 'Add file versioning', 'description' => 'Keep track of file changes over time.', 'priority' => 2, 'deadline' => '2025-05-30', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 60, 'title' => 'Create user permission matrix', 'description' => 'Define granular access permissions.', 'priority' => 3, 'deadline' => '2025-06-12', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 61, 'title' => 'Optimize database indexing', 'description' => 'Improve query performance.', 'priority' => 2, 'deadline' => '2025-05-18', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 62, 'title' => 'Setup API rate limiting', 'description' => 'Prevent abuse of API endpoints.', 'priority' => 2, 'deadline' => '2025-05-06', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 63, 'title' => 'Implement audit trail', 'description' => 'Log all changes to critical data.', 'priority' => 3, 'deadline' => '2025-06-04', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 64, 'title' => 'Add custom report builder', 'description' => 'Allow users to create custom reports.', 'priority' => 2, 'deadline' => '2025-06-18', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 65, 'title' => 'Create notification preferences', 'description' => 'Let users choose how they receive alerts.', 'priority' => 1, 'deadline' => '2025-05-22', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 66, 'title' => 'Integrate with chat system', 'description' => 'Allow in-app messaging.', 'priority' => 2, 'deadline' => '2025-06-14', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 67, 'title' => 'Build API for mobile app', 'description' => 'Provide endpoints for mobile client.', 'priority' => 3, 'deadline' => '2025-06-06', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 68, 'title' => 'Add data backup scheduling', 'description' => 'Automate regular data backups.', 'priority' => 2, 'deadline' => '2025-06-20', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 69, 'title' => 'Implement soft deletes', 'description' => 'Mark records as deleted instead of removing.', 'priority' => 2, 'deadline' => '2025-05-26', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 70, 'title' => 'Create data validation engine', 'description' => 'Centralize validation logic.', 'priority' => 3, 'deadline' => '2025-06-16', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 71, 'title' => 'Add user session management', 'description' => 'Control active user sessions.', 'priority' => 2, 'deadline' => '2025-05-30', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 72, 'title' => 'Setup automated data sync', 'description' => 'Sync data between systems.', 'priority' => 3, 'deadline' => '2025-06-22', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 73, 'title' => 'Implement data anonymization', 'description' => 'Remove personal data for testing.', 'priority' => 2, 'deadline' => '2025-06-10', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 74, 'title' => 'Add custom field support', 'description' => 'Allow users to define custom fields.', 'priority' => 1, 'deadline' => '2025-05-28', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 75, 'title' => 'Create automated data cleanup', 'description' => 'Remove old or unused data.', 'priority' => 2, 'deadline' => '2025-06-24', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 76, 'title' => 'Integrate with notification service', 'description' => 'Use external service for notifications.', 'priority' => 2, 'deadline' => '2025-06-12', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 77, 'title' => 'Build data migration scripts', 'description' => 'Migrate data between schema versions.', 'priority' => 3, 'deadline' => '2025-06-18', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 78, 'title' => 'Add user group management', 'description' => 'Organize users into groups.', 'priority' => 2, 'deadline' => '2025-06-08', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 79, 'title' => 'Implement data snapshotting', 'description' => 'Create point-in-time data copies.', 'priority' => 2, 'deadline' => '2025-06-26', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 80, 'title' => 'Create API documentation generator', 'description' => 'Automatically generate API docs.', 'priority' => 1, 'deadline' => '2025-06-14', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 81, 'title' => 'Add data export scheduling', 'description' => 'Schedule regular data exports.', 'priority' => 2, 'deadline' => '2025-06-28', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 82, 'title' => 'Implement user impersonation', 'description' => 'Allow admins to log in as other users.', 'priority' => 3, 'deadline' => '2025-06-20', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 83, 'title' => 'Add data import validation', 'description' => 'Validate data during import.', 'priority' => 2, 'deadline' => '2025-06-16', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 84, 'title' => 'Create custom workflow engine', 'description' => 'Allow custom business processes.', 'priority' => 3, 'deadline' => '2025-07-02', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 85, 'title' => 'Integrate with external ERP', 'description' => 'Sync data with enterprise resource tool.', 'priority' => 2, 'deadline' => '2025-06-22', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 86, 'title' => 'Add real-time data sync', 'description' => 'Sync data instantly across systems.', 'priority' => 3, 'deadline' => '2025-07-04', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 87, 'title' => 'Implement data masking', 'description' => 'Hide sensitive data in non-prod environments.', 'priority' => 2, 'deadline' => '2025-06-28', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 88, 'title' => 'Create API rate limit reporting', 'description' => 'Track and report API usage.', 'priority' => 2, 'deadline' => '2025-07-06', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 89, 'title' => 'Add custom dashboard filters', 'description' => 'Allow filtering dashboard data.', 'priority' => 1, 'deadline' => '2025-06-24', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 90, 'title' => 'Integrate with monitoring tool', 'description' => 'Send metrics to external monitoring.', 'priority' => 2, 'deadline' => '2025-07-08', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 91, 'title' => 'Build data anonymization tool', 'description' => 'Tool to anonymize datasets.', 'priority' => 3, 'deadline' => '2025-07-02', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 92, 'title' => 'Add user access logging', 'description' => 'Log all user access attempts.', 'priority' => 2, 'deadline' => '2025-07-10', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 93, 'title' => 'Implement data versioning', 'description' => 'Keep track of data changes over time.', 'priority' => 2, 'deadline' => '2025-07-04', 'status' => 4, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 94, 'title' => 'Create custom data export', 'description' => 'Export data in custom formats.', 'priority' => 1, 'deadline' => '2025-06-30', 'status' => 2, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 95, 'title' => 'Add API usage analytics', 'description' => 'Track API endpoint usage.', 'priority' => 2, 'deadline' => '2025-07-12', 'status' => 1, 'created_at' => $now, 'updated_at' => $now],
+            ['project_id' => 96, 'title' => 'Integrate with ticketing system', 'description' => 'Sync with support ticket system.', 'priority' => 2, 'deadline' => '2025-07-06', 'status' => 3, 'created_at' => $now, 'updated_at' => $now],
+        ];
+
+        DB::table('tasks')->insert($tasks);
+    }
+}
